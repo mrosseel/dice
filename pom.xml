@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>be.eonconsult.dice</groupId>
+	<groupId>be.miker.dice</groupId>
 	<artifactId>dice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 	<name>DICE</name>
 	<developers>
 		<developer>
@@ -13,7 +13,6 @@
 			<email>mike@eon-consult.be</email>
 			<url>http://eon-consult.be</url>
 			<roles>
-				<role>architect</role>
 				<role>developer</role>
 			</roles>
 		</developer>

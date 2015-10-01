@@ -30,7 +30,7 @@ public class NeighbourSEMinDistanceDieFitness implements DieFitness {
 		return calculateFitness(theDie.getValues(), theDie.getFaces());
 	}
 	/* (non-Javadoc)
-	 * @see be.miker.dice.fitness.DieFitness#calculateFitness(be.miker.dice.data.Die)
+	 * @see main.java.dice.fitness.DieFitness#calculateFitness(main.java.dice.data.Die)
 	 */
 	public double calculateFitness(int[] values, int[][] faces) {
 		this.values = values;

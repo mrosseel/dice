@@ -2,7 +2,6 @@ package be.miker.dice.application;
 
 
 import be.miker.dice.data.D20;
-import be.miker.dice.data.D6;
 import be.miker.dice.data.Die;
 import be.miker.dice.data.DieUtil;
 import be.miker.dice.fitness.*;

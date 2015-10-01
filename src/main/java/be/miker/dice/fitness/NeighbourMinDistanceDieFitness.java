@@ -26,7 +26,7 @@ public class NeighbourMinDistanceDieFitness implements DieFitness {
 	}
 
 	/* (non-Javadoc)
-	 * @see be.miker.dice.fitness.DieFitness#calculateFitness(be.miker.dice.data.Die)
+	 * @see main.java.dice.fitness.DieFitness#calculateFitness(main.java.dice.data.Die)
 	 */
 	public double calculateFitness(int[] values, int[][] faces) {
 		double result = 0;

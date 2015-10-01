@@ -11,9 +11,9 @@ package be.miker.dice.data;
  * Window - Preferences - Java - Code Generation - Code and Comments
  */
 public class D20 extends Die {
-	
-	private static int D20_NR_OF_FACES = 20; 
-	
+
+	private static int D20_NR_OF_FACES = 20;
+
 	/** positions of all neighbours. */
 	private static int[][] faces = {
 			{6,18,12},
@@ -43,11 +43,11 @@ public class D20 extends Die {
 	public D20() {
 		this(DieUtil.generateFaces(D20_NR_OF_FACES));
 	}
-	
+
 	public D20(int [] values) {
 		super(faces);
 		assert values.length == getNrOfFaces();
 		setValues(values);
 	}
-	
+
 }

@@ -1,11 +1,11 @@
 /*
  * Created on Jun 13, 2004
- *  
+ *
  */
 package be.miker.dice.process;
 /**
  * @author mike
- * 
+ *
  * TODO To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Generation - Code and Comments
  */
