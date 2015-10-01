@@ -9,37 +9,40 @@ import be.miker.dice.data.Die;
 /**
  * @author mike
  *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Generation - Code and Comments
+ * Sum of the squared difference between the current face and its neighbour faces.
+ *
  */
 public class NeighbourSEMinDistanceDieFitness implements DieFitness {
-	
+
 	/** optimisation, hold arrays */
 	private int[] values;
 	/** optimisation, hold arrays */
 	private int[][] faces;
-	
+
 	/**
-	 * 
+	 *
 	 */
 	public NeighbourSEMinDistanceDieFitness() {
 		super();
 	}
-	
+
+	public double calculateFitness(Die theDie) {
+		return calculateFitness(theDie.getValues(), theDie.getFaces());
+	}
 	/* (non-Javadoc)
 	 * @see be.miker.dice.fitness.DieFitness#calculateFitness(be.miker.dice.data.Die)
 	 */
-	public double calculateFitness(Die theDie) {
-		this.values = theDie.getValues();
-		this.faces = theDie.getFaces();
+	public double calculateFitness(int[] values, int[][] faces) {
+		this.values = values;
+		this.faces = faces;
 		double result = 0;
-		
+
 		for (int faceCounter = 0; faceCounter < this.values.length; faceCounter++) {
 			for (int neighbourCounter = 0; neighbourCounter < this.faces[faceCounter].length; neighbourCounter++) {
 				result+=Math.pow(this.values[faceCounter] - this.values[this.faces[faceCounter][neighbourCounter]], 2);
 			}
 		}
-		
+
 		return result;
 	}
 }

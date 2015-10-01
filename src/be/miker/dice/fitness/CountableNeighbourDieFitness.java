@@ -8,16 +8,13 @@ import be.miker.dice.data.Die;
 
 /**
  * @author mike
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Generation - Code and Comments
  */
-public class OneFromNeighbourDieFitness implements DieFitness {
+public class CountableNeighbourDieFitness implements DieFitness {
 
 	/**
 	 *
 	 */
-	public OneFromNeighbourDieFitness() {
+	public CountableNeighbourDieFitness() {
 		super();
 	}
 
@@ -28,11 +25,13 @@ public class OneFromNeighbourDieFitness implements DieFitness {
 		double result = 0;
 
 		for (int faceCounter = 0; faceCounter < values.length; faceCounter++) {
+			double intermediateResult = 0;
 			for (int neighbourCounter = 0; neighbourCounter < faces[faceCounter].length; neighbourCounter++) {
 				if((values[faceCounter] - values[faces[faceCounter][neighbourCounter]]) == 1) {
-				    result++;
+				    intermediateResult++;
 				}
 			}
+			result += (intermediateResult/2)%2;
 		}
 
 		return result;

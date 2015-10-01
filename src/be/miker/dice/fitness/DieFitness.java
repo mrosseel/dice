@@ -13,12 +13,18 @@ import be.miker.dice.data.Die;
  * Window - Preferences - Java - Code Generation - Code and Comments
  */
 public interface DieFitness {
-	
+
 	/**
 	 * Calculates the fitness of a given die.
-	 * 
+	 *
 	 * @param theDie the die to calculate the fitness off
 	 * @return the fitness
 	 */
 	public double calculateFitness(Die theDie);
+
+	public double calculateFitness(int[] values, int[][] faces);
+
+	public default boolean maximum() {
+		return false;
+	}
 }

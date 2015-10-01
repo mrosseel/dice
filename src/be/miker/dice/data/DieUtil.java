@@ -1,6 +1,6 @@
 /*
  * Created on Jun 13, 2004
- *  
+ *
  */
 package be.miker.dice.data;
 
@@ -8,17 +8,17 @@ import java.util.Random;
 
 /**
  * @author mike
- * 
+ *
  * TODO To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Generation - Code and Comments
  */
 public class DieUtil {
-	
+
 	private static Random random = new Random();
-	
+
 	/**
 	 * Generate a default value list for a given number of faces.
-	 * 
+	 *
 	 * @param nrOfFaces
 	 *            the number of faces on the die
 	 * @return array containing 0 1 ... nrOfFaces -1
@@ -30,6 +30,18 @@ public class DieUtil {
 		}
 		return result;
 	}
+
+	public static void printNeighbours(Die theDie, int[] result) {
+        int[][] faces = theDie.getFaces();
+
+        for (int resultCounter = 0; resultCounter < result.length; resultCounter++) {
+            StringBuffer buffer = new StringBuffer();
+            for (int neighbourCounter = 0; neighbourCounter < faces[resultCounter].length; neighbourCounter++) {
+                buffer.append(" ").append(result[faces[resultCounter][neighbourCounter]]+1);
+            }
+            System.out.println(result[resultCounter]+1 + " " + buffer.toString());
+        }
+    }
 
 	public static boolean testFacesCorrectness(Die theDie) {
 		int[][] faces = theDie.getFaces();
@@ -50,7 +62,7 @@ public class DieUtil {
 		}
 		return correctness;
 	}
-	
+
 	public static int getRandomDieThrow(int nrOfFaces) {
 		return random.nextInt(nrOfFaces);
 	}
