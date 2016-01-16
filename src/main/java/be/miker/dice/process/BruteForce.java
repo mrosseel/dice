@@ -21,7 +21,7 @@ public class BruteForce {
 	public static void process(Die theDie, DieFitness fitness) {
 		int nrFaces = theDie.getNrOfFaces();
 		double bestResult = fitness.calculateFitness(theDie);
-		int[] bestValues = theDie.getValues();
+		int[] bestValues = new int[theDie.getValues().length];
 		int[] currentValues;
 		double currentFitness;
 		Set<String> values = new HashSet<>();
@@ -32,15 +32,19 @@ public class BruteForce {
 		PermutationGenerator gen = new PermutationGenerator(nrFaces);
 
 		long counter= 0;
+		boolean shouldUpdate;
 		while(gen.hasMore()) {
 			currentValues = gen.getNext();
 			theDie.setValues(currentValues);
-			String stringValue = Arrays.stream(currentValues).mapToObj(value -> String.valueOf(value)).collect(Collectors.joining("")).toString();
-			values.add(stringValue);
+//			String stringValue = Arrays.stream(currentValues).mapToObj(value -> String.valueOf(value)).collect(Collectors.joining("")).toString();
+//			values.add(stringValue);
 			counter++;
-			if((currentFitness = fitness.calculateFitness(theDie)) < bestResult) {
+			currentFitness = fitness.calculateFitness(theDie);
+			shouldUpdate = fitness.maximum()?(currentFitness > bestResult):
+			(currentFitness < bestResult);
+			if(shouldUpdate) {
 				bestResult = currentFitness;
-				bestValues = currentValues;
+				System.arraycopy(currentValues, 0, bestValues, 0, currentValues.length);
 				System.out.println("Current best die fitness = " + bestResult+ " num left% = " + counter*100.0/gen.getNumLeft().doubleValue());
 				System.out.println(theDie);
 			}

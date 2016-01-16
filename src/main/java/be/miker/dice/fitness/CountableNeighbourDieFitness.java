@@ -27,7 +27,7 @@ public class CountableNeighbourDieFitness implements DieFitness {
 		for (int faceCounter = 0; faceCounter < values.length; faceCounter++) {
 			double intermediateResult = 0;
 			for (int neighbourCounter = 0; neighbourCounter < faces[faceCounter].length; neighbourCounter++) {
-				if((values[faceCounter] - values[faces[faceCounter][neighbourCounter]]) == 1) {
+				if(Math.abs(values[faceCounter] - values[faces[faceCounter][neighbourCounter]]) == 1) {
 				    intermediateResult++;
 				}
 			}

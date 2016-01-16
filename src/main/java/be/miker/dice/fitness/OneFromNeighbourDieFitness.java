@@ -6,45 +6,46 @@ package be.miker.dice.fitness;
 
 import be.miker.dice.data.Die;
 
+import java.util.stream.IntStream;
+
 /**
- * @author mike
+ * The One distance measure:
+ * Give points for every neighbour being one below or one above the current face value.
+ * Bigger values are better.
  *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Generation - Code and Comments
+ * @author mike
  */
 public class OneFromNeighbourDieFitness implements DieFitness {
 
-	/**
-	 *
-	 */
-	public OneFromNeighbourDieFitness() {
-		super();
-	}
+    /**
+     *
+     */
+    public OneFromNeighbourDieFitness() {
+        super();
+    }
 
-	/* (non-Javadoc)
-	 * @see main.java.dice.fitness.DieFitness#calculateFitness(main.java.dice.data.Die)
-	 */
-	public double calculateFitness(int[] values, int[][] faces) {
-		double result = 0;
+    /* (non-Javadoc)
+     * @see main.java.dice.fitness.DieFitness#calculateFitness(main.java.dice.data.Die)
+     */
+    public double calculateFitness(int[] values, int[][] faces) {
+        int result = 0;
+        for (int faceCounter = 0; faceCounter < values.length; faceCounter++) {
+            for (int neighbourCounter = 0; neighbourCounter < faces[faceCounter].length; neighbourCounter++) {
+                if (Math.abs((values[faceCounter] - values[faces[faceCounter][neighbourCounter]])) == 1) {
+                    result++;
+                }
+            }
+        }
+        return result;
+    }
 
-		for (int faceCounter = 0; faceCounter < values.length; faceCounter++) {
-			for (int neighbourCounter = 0; neighbourCounter < faces[faceCounter].length; neighbourCounter++) {
-				if((values[faceCounter] - values[faces[faceCounter][neighbourCounter]]) == 1) {
-				    result++;
-				}
-			}
-		}
+    @Override
+    public double calculateFitness(Die theDie) {
+        return calculateFitness(theDie.getValues(), theDie.getFaces());
+    }
 
-		return result;
-	}
-
-	@Override
-	public double calculateFitness(Die theDie) {
-		return calculateFitness(theDie.getValues(), theDie.getFaces());
-	}
-
-	@Override
-	public boolean maximum() {
-		return true;
-	}
+    @Override
+    public boolean maximum() {
+        return true;
+    }
 }

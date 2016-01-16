@@ -21,7 +21,7 @@ public class JeneticsTester {
     static DieFitness neighbourSEDistanceDieFitness = new NeighbourSEMinDistanceDieFitness();
     static DieFitness oneNeighbourFitness = new OneFromNeighbourDieFitness();
     static DieFitness countableNeighbourDieFitness = new CountableNeighbourDieFitness();
-    static DieFitness fitness = countableNeighbourDieFitness;
+    static DieFitness fitness = oneNeighbourFitness;
 
     // This method calculates the fitness for a given genotype.
     private static Double distance(final Genotype<EnumGene<Integer>> gt) {
@@ -45,7 +45,7 @@ public class JeneticsTester {
                         JeneticsTester::distance,
                         PermutationChromosome.ofInteger(die.getNrOfFaces()))
                 .optimize(optimize)
-                .maximalPhenotypeAge(11)
+                .maximalPhenotypeAge(110)
                 .populationSize(50000)
                 .alterers(
                         new SwapMutator<>(0.35),
@@ -60,7 +60,7 @@ public class JeneticsTester {
         final Phenotype<EnumGene<Integer>, Double> best = engine.stream()
                 // Truncate the evolution stream after 7 "steady"
                 // generations.
-                .limit(bySteadyFitness(100))
+                .limit(bySteadyFitness(1000))
                         // The evolution will stop after maximal 100
                         // generations.
                 .limit(25000)

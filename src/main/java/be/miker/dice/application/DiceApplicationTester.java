@@ -4,6 +4,7 @@
  */
 package be.miker.dice.application;
 
+import be.miker.dice.data.D20;
 import be.miker.dice.data.D6;
 import be.miker.dice.data.Die;
 import be.miker.dice.fitness.DieFitness;
@@ -21,7 +22,7 @@ public class DiceApplicationTester {
         DieFitness neighbourMinDistanceDieFitness = new NeighbourMinDistanceDieFitness();
         DieFitness oneFromNeighbourDieFitness = new OneFromNeighbourDieFitness();
         DieFitness neighbourSEMinDistanceDieFitness = new NeighbourSEMinDistanceDieFitness();
-        DieFitness fitness = neighbourMinDistanceDieFitness;
+        DieFitness fitness = oneFromNeighbourDieFitness;
         Die die = new D6();
 
         BruteForce.process(die, fitness);
